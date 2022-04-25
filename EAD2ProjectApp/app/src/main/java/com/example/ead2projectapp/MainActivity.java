@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         String playerID = "";
                         try {
-                            playerID = "Player: " +response.getString("playername") + "\nPosition: " + response.getString("position");
+                            playerID = "Age: " +response.getString("age") + "\nPosition: " + response.getString("position");
 
                         } catch (JSONException e) {
                             e.printStackTrace();
