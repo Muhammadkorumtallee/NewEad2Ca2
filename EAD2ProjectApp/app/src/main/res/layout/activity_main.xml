@@ -10,8 +10,9 @@
         android:id="@+id/players"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:text="Show Players"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/allPlayers"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
@@ -30,13 +31,13 @@
 
     <Button
         android:id="@+id/teampage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
+        android:layout_width="154dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="68dp"
         android:onClick="nextActivity"
-        android:text="Teams"
+        android:text="@string/teams"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.976"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playerlist" />
 
@@ -44,9 +45,10 @@
         android:id="@+id/searchPlayer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search Player"
+        android:layout_marginTop="84dp"
+        android:text="@string/searchPlayer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.682"
+        app:layout_constraintHorizontal_bias="0.937"
         app:layout_constraintStart_toEndOf="@+id/players"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,13 +56,14 @@
         android:id="@+id/playerNameInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
         android:ems="10"
         android:hint="Player Name"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/playerlist"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.079"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchPlayer"
         tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
@@ -73,5 +76,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playerNameInput" />
 
+    <Button
+        android:id="@+id/translatebtn"
+        android:layout_width="163dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="64dp"
+        android:text="@string/translator"
+        app:layout_constraintEnd_toStartOf="@+id/teampage"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/playerlist" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

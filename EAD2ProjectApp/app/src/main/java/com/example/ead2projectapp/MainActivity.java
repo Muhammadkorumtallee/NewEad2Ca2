@@ -1,8 +1,8 @@
 package com.example.ead2projectapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -19,12 +18,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     Button btn_searchPlayers;
     EditText playerNameInput;
     TextView playerview;
+    Button translatebtn;
+    String Lng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         playerNameInput = findViewById(R.id.playerNameInput);
         playerview = findViewById(R.id.playerview);
 
+        //button to get all player name and position
         btn_players.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                             for (int i = 0; i < 8; i++){
                                 playerInfo = response.getJSONObject(i);
                                 playerID = "";
-                                playerID = playerInfo.getString("playername") + " " + playerInfo.getString("position");
+                                playerID = playerInfo.getString("playername") + "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t " + playerInfo.getString("position");
                                 allPlayers.add(playerID);
                             }
                         } catch (JSONException e) {
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(MainActivity.this, "Error getting json for players", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Invalid Player Name", Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -85,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+        //Search Player by Name
         btn_searchPlayers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         String playerID = "";
                         try {
-                            playerID = response.getString("playername") + " " + response.getString("position");
+                            playerID = "Player: " +response.getString("playername") + "\nPosition: " + response.getString("position");
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -115,6 +117,37 @@ public class MainActivity extends AppCompatActivity {
                 });
 
                 queue.add(request);
+            }
+        });
+
+
+        translatebtn = findViewById(R.id.translatebtn);
+        Lng = Locale.getDefault().getLanguage().toLowerCase(Locale.ROOT);
+
+        //When clicked translate to Arabic or English
+        translatebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(Lng.equals("en")){
+                    Lng = "ar";
+                    Locale locale = new Locale(Lng);
+                    Locale.setDefault(locale);
+                    Configuration config = new Configuration();
+                    config.locale = locale;
+                    getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+                    recreate();
+                    return;
+                }
+                if(Lng.equals("ar")){
+                    Lng = "en";
+                    Locale locale = new Locale(Lng);
+                    Locale.setDefault(locale);
+                    Configuration config = new Configuration();
+                    config.locale = locale;
+                    getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+                    recreate();
+                    return;
+                }
             }
         });
     }
