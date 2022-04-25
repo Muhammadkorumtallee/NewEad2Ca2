@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\OneDrive - Technological University Dublin\\.4thYearSemester2\\EAD2\\EAD2-CA--master\\EAD2-CA--master\\EAD2 Project API\\EAD2 Project API.csproj": {}
+    "C:\\Users\\User\\OneDrive - Technological University Dublin\\.4thYearSemester2\\EAD2\\EADCA2repo\\EAD2 Project API\\EAD2 Project API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\OneDrive - Technological University Dublin\\.4thYearSemester2\\EAD2\\EAD2-CA--master\\EAD2-CA--master\\EAD2 Project API\\EAD2 Project API.csproj": {
+    "C:\\Users\\User\\OneDrive - Technological University Dublin\\.4thYearSemester2\\EAD2\\EADCA2repo\\EAD2 Project API\\EAD2 Project API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\OneDrive - Technological University Dublin\\.4thYearSemester2\\EAD2\\EAD2-CA--master\\EAD2-CA--master\\EAD2 Project API\\EAD2 Project API.csproj",
+        "projectUniqueName": "C:\\Users\\User\\OneDrive - Technological University Dublin\\.4thYearSemester2\\EAD2\\EADCA2repo\\EAD2 Project API\\EAD2 Project API.csproj",
         "projectName": "EAD2 Project API",
-        "projectPath": "C:\\Users\\User\\OneDrive - Technological University Dublin\\.4thYearSemester2\\EAD2\\EAD2-CA--master\\EAD2-CA--master\\EAD2 Project API\\EAD2 Project API.csproj",
+        "projectPath": "C:\\Users\\User\\OneDrive - Technological University Dublin\\.4thYearSemester2\\EAD2\\EADCA2repo\\EAD2 Project API\\EAD2 Project API.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\OneDrive - Technological University Dublin\\.4thYearSemester2\\EAD2\\EAD2-CA--master\\EAD2-CA--master\\EAD2 Project API\\obj\\",
+        "outputPath": "C:\\Users\\User\\OneDrive - Technological University Dublin\\.4thYearSemester2\\EAD2\\EADCA2repo\\EAD2 Project API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -15,6 +17,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -27,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
 
     Button btn_players;
     ListView playerlist;
+    Button btn_searchPlayers;
+    EditText playerNameInput;
+    TextView playerview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
 
         btn_players = findViewById(R.id.players);
         playerlist = findViewById(R.id.playerlist);
+        btn_searchPlayers = findViewById(R.id.searchPlayer);
+        playerNameInput = findViewById(R.id.playerNameInput);
+        playerview = findViewById(R.id.playerview);
 
         btn_players.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                         JSONObject playerInfo = new JSONObject();
                         ArrayList<String> allPlayers = new ArrayList<>();
                         try {
-                            for (int i = 0; i < 7; i++){
+                            for (int i = 0; i < 8; i++){
                                 playerInfo = response.getJSONObject(i);
                                 playerID = "";
                                 playerID = playerInfo.getString("playername") + " " + playerInfo.getString("position");
@@ -75,38 +84,28 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
-    }
 
-    public void nextActivity(View v){
-        Intent i = new Intent(this, MainActivity2.class);
-        startActivity(i);
-    }
-}
-
-/*btn_teams = findViewById(R.id.teams);
-        et_input_value_text = findViewById(R.id.input_value_text);
-
-        btn_teams.setOnClickListener(new View.OnClickListener() {
+        btn_searchPlayers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Instantiate the RequestQueue
                 RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
-                String url = "https://ead2projectapi20220421170132.azurewebsites.net/api/";
+                String url = "https://ead2projectapi20220421170132.azurewebsites.net/api/Players/" + playerNameInput.getText().toString();
 
+                //Toast.makeText(MainActivity.this, url, Toast.LENGTH_SHORT).show();
 
-                JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url + "Players/", null, new Response.Listener<JSONArray>() {
+                JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONArray response) {
-                        String teamID = "";
-
+                    public void onResponse(JSONObject response) {
+                        String playerID = "";
                         try {
-                            JSONObject teaminfo = response.getJSONObject(0);
-                            teamID = teaminfo.getString("teamId");
+                            playerID = response.getString("playername") + " " + response.getString("position");
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        Toast.makeText(MainActivity.this, response.toString(), Toast.LENGTH_SHORT).show();
-
+                        playerview.setText(playerID);
+                        //Toast.makeText(MainActivity.this, playerID.toString(), Toast.LENGTH_SHORT).show();
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -117,23 +116,12 @@ public class MainActivity extends AppCompatActivity {
 
                 queue.add(request);
             }
+        });
+    }
 
-        });*/
+    public void nextActivity(View v){
+        Intent i = new Intent(this, MainActivity2.class);
+        startActivity(i);
+    }
 
-//Request string response from provided url
-                /*StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                Toast.makeText(MainActivity.this, response, Toast.LENGTH_SHORT).show();
-                            }
-                        }, new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-
-                                Toast.makeText(MainActivity.this, "Error getting players", Toast.LENGTH_SHORT).show();
-                            }
-                        });*/
-//add request the requestQueue
-
-//Toast.makeText(MainActivity.this, "Clicked me", Toast.LENGTH_SHORT).show();
+}
