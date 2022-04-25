@@ -2,11 +2,11 @@ package com.example.ead2projectapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn_teams;
+    Button btn_players;
     ListView playerlist;
 
     @Override
@@ -33,10 +33,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btn_teams = findViewById(R.id.teams);
-        playerlist = (ListView) findViewById(R.id.playerlist);
+        btn_players = findViewById(R.id.players);
+        playerlist = findViewById(R.id.playerlist);
 
-        btn_teams.setOnClickListener(new View.OnClickListener() {
+        btn_players.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Instantiate the RequestQueue
@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
                         ArrayAdapter arrayAdapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, allPlayers);
+                        playerlist.setAdapter(arrayAdapter);
                         //Toast.makeText(MainActivity.this, response.toString(), Toast.LENGTH_SHORT).show();
                     }
                 }, new Response.ErrorListener() {
@@ -74,6 +75,11 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+    }
+
+    public void nextActivity(View v){
+        Intent i = new Intent(this, MainActivity2.class);
+        startActivity(i);
     }
 }
 

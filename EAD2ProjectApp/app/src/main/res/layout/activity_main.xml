@@ -7,25 +7,58 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/teams"
+        android:id="@+id/players"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:text="Teams"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="84dp"
+        android:text="Show Players"
         app:layout_constraintBottom_toTopOf="@+id/playerlist"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="51dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <ListView
         android:id="@+id/playerlist"
         android:layout_width="wrap_content"
         android:layout_height="486dp"
-        android:layout_marginTop="228dp"
+        android:layout_marginTop="180dp"
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/teampage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="nextActivity"
+        android:text="Teams"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/searchPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search Player"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.682"
+        app:layout_constraintStart_toEndOf="@+id/players"
+        tools:layout_editor_absoluteY="45dp" />
+
+    <EditText
+        android:id="@+id/playerNameInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Player Name"
+        app:layout_constraintBottom_toTopOf="@+id/playerlist"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchPlayer" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
